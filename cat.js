@@ -6,7 +6,9 @@ module.exports = function(filenames) {
       if (err) {
         console.error(err);
       }
-      process.stdout.write(`\n${filename}\n${fileContent}\n\n`);
+      process.stdout.write(
+        `${filename}\n${'='.repeat(filename.length)}\n${fileContent}\n`
+      );
     });
   });
 };

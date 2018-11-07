@@ -1,12 +1,14 @@
 const pwd = require('./pwd');
 const ls = require('./ls');
 const cat = require('./cat');
+const echo = require('./echo');
 
 const prompt = 'prompt > ';
 const commands = {
   pwd,
   ls,
   cat,
+  echo,
 };
 process.stdout.write(`${prompt}`);
 process.stdin.on('data', data => {
@@ -20,5 +22,6 @@ process.stdin.on('data', data => {
     commands[cmd](args);
   } else {
     process.stdout.write('You typed: ' + cmd);
+    process.stdout.write(`\n${prompt}`);
   }
 });
