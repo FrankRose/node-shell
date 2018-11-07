@@ -12,6 +12,12 @@ const commands = {
   echo,
   curl,
 };
+
+const done = output => {
+  process.stdout.write(output);
+  process.stdout.write(`\n${prompt}`);
+};
+
 process.stdout.write(`${prompt}`);
 process.stdin.on('data', data => {
   const [cmd, ...args] = data
@@ -21,9 +27,11 @@ process.stdin.on('data', data => {
 
   //   console.log(cmd);
   if (commands[cmd]) {
-    commands[cmd](args);
+    commands[cmd](done, args);
   } else {
-    process.stdout.write('You typed: ' + cmd);
-    process.stdout.write(`\n${prompt}`);
+    // process.stdout.write('You typed: ' + cmd);
+    // process.stdout.write(`\n${prompt}`);
+    // process.stdout.write(`Command not found: ${cmd}`);
+    done(`Command not found: ${cmd}`);
   }
 });
