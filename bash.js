@@ -2,6 +2,7 @@ const pwd = require('./pwd');
 const ls = require('./ls');
 const cat = require('./cat');
 const echo = require('./echo');
+const curl = require('./curl');
 
 const prompt = 'prompt > ';
 const commands = {
@@ -9,6 +10,7 @@ const commands = {
   ls,
   cat,
   echo,
+  curl,
 };
 process.stdout.write(`${prompt}`);
 process.stdin.on('data', data => {
