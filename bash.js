@@ -3,6 +3,7 @@ const ls = require('./ls');
 const cat = require('./cat');
 const echo = require('./echo');
 const curl = require('./curl');
+const date = require('./date');
 
 const prompt = 'prompt > ';
 const commands = {
@@ -11,6 +12,7 @@ const commands = {
   cat,
   echo,
   curl,
+  date,
 };
 
 const done = output => {
