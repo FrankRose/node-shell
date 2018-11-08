@@ -1,14 +1,23 @@
 const fs = require('fs');
 
-module.exports = function(filenames) {
+module.exports = function(callback, filenames) {
+  let allFilesContent = '';
   filenames.forEach(filename => {
     fs.readFile(filename, 'utf8', (err, fileContent) => {
       if (err) {
-        console.error(err);
+        callback(err.message);
       }
-      process.stdout.write(
-        `${filename}\n${'='.repeat(filename.length)}\n${fileContent}\n`
-      );
+      // process.stdout.write(
+      //   `${filename}\n${'='.repeat(filename.length)}\n${fileContent}\n`
+      // );
+      // callback(`${filename}\n${'='.repeat(filename.length)}\n${fileContent}\n`);
+      allFilesContent += `${filename}\n${'='.repeat(
+        filename.length
+      )}\n${fileContent}\n`;
     });
   });
+
+  setTimeout(() => {
+    callback(allFilesContent);
+  }, 50);
 };
